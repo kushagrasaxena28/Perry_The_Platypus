@@ -1,0 +1,72 @@
+Perry_the_Platypus/
+└── backend/
+    ├── cmd/
+    │   └── main.go                # Entry point, initializes the Gin server
+    ├── features/
+    │   ├── auth/                  # Authentication (signup, login)
+    │   │   ├── routes.go          # API endpoints (e.g., /signup, /login)
+    │   │   ├── logic.go           # Business logic (e.g., validate user, hash password)
+    │   │   ├── queries.go         # Database queries (e.g., insert user, get user)
+    │   │   └── models/
+    │   │       └── user.go        # User struct
+    │   ├── content/               # Posts, reels, videos, tags
+    │   │   ├── routes.go          # API endpoints (e.g., /posts, /reels)
+    │   │   ├── logic.go           # Business logic (e.g., validate post media)
+    │   │   ├── queries.go         # Database queries (e.g., insert post, get post)
+    │   │   └── models/
+    │   │       ├── post.go
+    │   │       ├── reel.go
+    │   │       ├── video.go
+    │   │       └── tag.go
+    │   ├── comments/              # Comments feature (tied to content)
+    │   │   ├── routes.go          # API endpoints (e.g., /comments, /comments/:id)
+    │   │   ├── logic.go           # Business logic (e.g., add comment, validate comment)
+    │   │   ├── queries.go         # Database queries (e.g., insert comment, get comments)
+    │   │   └── models/
+    │   │       └── comment.go     # Comment struct
+    │   ├── likes/                 # Likes feature (tied to content/comments)
+    │   │   ├── routes.go          # API endpoints (e.g., /likes, /likes/:id)
+    │   │   ├── logic.go           # Business logic (e.g., add like, remove like)
+    │   │   ├── queries.go         # Database queries (e.g., insert like, get likes)
+    │   │   └── models/
+    │   │       └── like.go        # Like struct
+    │   ├── channels/              # Channels feature
+    │   │   ├── routes.go          # API endpoints (e.g., /channels)
+    │   │   ├── logic.go           # Business logic (e.g., create channel)
+    │   │   ├── queries.go         # Database queries (e.g., insert channel)
+    │   │   └── models/
+    │   │       └── channel.go     # Channel struct
+    │   ├── profiles/              # User profiles (includes follows)
+    │   │   ├── routes.go          # API endpoints (e.g., /profiles, /follow)
+    │   │   ├── logic.go           # Business logic (e.g., update profile, follow user)
+    │   │   ├── queries.go         # Database queries (e.g., get profile, insert follow)
+    │   │   └── models/
+    │   │       └── profile.go     # Profile struct
+    │   ├── notifications/         # Notifications feature
+    │   │   ├── routes.go          # API endpoints (e.g., /notifications)
+    │   │   ├── logic.go           # Business logic (e.g., send notification)
+    │   │   ├── queries.go         # Database queries (e.g., insert notification)
+    │   │   └── models/
+    │   │       └── notification.go # Notification struct
+    │   └── chats/                 # Chats feature
+    │       ├── routes.go          # API endpoints (e.g., /chats, /messages)
+    │       ├── logic.go           # Business logic (e.g., send message)
+    │       ├── queries.go         # Database queries (e.g., insert chat, get messages)
+    │       └── models/
+    │           ├── chat.go        # Chat struct
+    │           └── message.go     # Message struct
+    ├── shared/                    # Common utilities
+    │   ├── database/
+    │   │   ├── connect.go         # Database connection (pgx/v5)
+    │   │   └── schema.sql         # Database schema file
+    │   ├── config/
+    │   │   └── env.go             # Environment variable loading
+    │   ├── s3/
+    │   │   └── storage.go         # AWS S3 utilities
+    │   └── middleware/
+    │       └── middleware.go      # General middleware (e.g., logging, CORS)
+    ├── .env                       # Environment variables (e.g., DATABASE_URL)
+    ├── docker-compose.yml         # Dockerized PostgreSQL setup
+    ├── go.mod                     # Go module dependencies
+    ├── go.sum                     # Dependency checksums
+    └── schema_diagram.txt         # Database schema visualization
