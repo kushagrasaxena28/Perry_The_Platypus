@@ -3,20 +3,19 @@ package main
 import (
 	"Perry_the_Platypus/backend/features/auth"
 	"Perry_the_Platypus/backend/features/content"
+	"Perry_the_Platypus/backend/shared/config"
 	"Perry_the_Platypus/backend/shared/database"
 	"context"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
 )
 
 func main() {
 	// Load .env file
-	if err := godotenv.Load(); err != nil {
-		log.Printf("No .env file found: %v", err)
-	}
+	config.LoadEnv()
+
 	//Get the Port
 	port := os.Getenv("PORT")
 	fmt.Println(port)

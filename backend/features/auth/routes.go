@@ -44,7 +44,7 @@ func AuthRoutes(r *gin.Engine, db *pgx.Conn) {
 		c.JSON(http.StatusOK, gin.H{"token": token, "user": sanitizeUser(user)})
 	})
 
-	authGroup.GET("/logout", middleware.JWTMiddleware(os.Getenv("JWT_SECRET")), func(c *gin.Context) {
+	authGroup.POST("/logout", middleware.JWTMiddleware(os.Getenv("JWT_SECRET")), func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "Logout successful. Please remove the token from your client.",
 		})
